@@ -1,3 +1,9 @@
+<header class="todo-list-header">
+    <button type="button"
+            class="btn btn-success"
+            (click)="openModal(template)">Add task</button>
+</header>
+
 <ng-container *ngIf="data$ | async as todos; else loader">
     <ul class="todo-list">
         <li *ngFor="let todo of todos; let index = index"
@@ -10,8 +16,56 @@
     <footer class="todo-list-footer">
         <p><strong>Total:</strong> {{todos.length}}
             (<strong>completed:</strong> {{ getCompletedCount(todos)}},
-            <strong>not completed:</strong> {{ todos.length - getCompletedCount(todos)}})</p>
+            <strong>not completed:</strong> {{ todos.length - getCompletedCount(todos)}})
+        </p>
     </footer>
 </ng-container>
 
 <ng-template #loader>Loading...</ng-template>
+
+<ng-template #template>
+    <form [formGroup]="form"
+          (ngSubmit)="submit()">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add task</h4>
+            <button type="button"
+                    class="btn-close close pull-right"
+                    aria-label="Close"
+                    (click)="modalRef?.hide()">
+                <span aria-hidden="true"
+                      class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="mb-3">
+                <label for="taskTitle"
+                       class="form-label">Title</label>
+                <input type="text"
+                       class="form-control"
+                       id="taskTitle"
+                       placeholder="Enter title"
+                       formControlName="title">
+            </div>
+            <div class="mb-3">
+                <label for="taskDesc"
+                       class="form-label">Description</label>
+                <textarea class="form-control"
+                          placeholder="Enter description"
+                          id="taskDesc"
+                          rows="3"
+                          formControlName="desc"></textarea>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit"
+                    class="btn btn-success"
+                    [disabled]="form.invalid">Save</button>
+            <button type="button"
+                    class="btn btn-secondary"
+                    (click)="modalRef?.hide()">Cancel</button>
+        </div>
+    </form>
+</ng-template>

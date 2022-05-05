@@ -28,4 +28,8 @@ export class DataService {
   removeTask(index: number): void {
     this.state.getValue().splice(index, 1);
   }
+  
+  addTask(task: ITask): void {
+    this.state.getValue().unshift(task);
+  }
 }
