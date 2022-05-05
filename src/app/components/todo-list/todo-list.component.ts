@@ -17,6 +17,7 @@ export class TodoListComponent implements OnInit {
   modalRef?: BsModalRef;
   form: FormGroup;
   subscriptions: Subscription[] = [];
+  searchString: string = '';
 
   constructor(private dataService: DataService, private modalService: BsModalService) { }
 

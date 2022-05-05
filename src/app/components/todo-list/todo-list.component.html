@@ -12,9 +12,15 @@
             (click)="removeAllCompleted()">Remove completed</button>
 </header>
 
-<ng-container *ngIf="data$ | async as todos; else loader">
+<input type="search"
+       class="form-control"
+       placeholder="Search"
+       [(ngModel)]="searchString">
+<div class="text-secondary mt-1">To search by status enter "true" or "false"</div>
+
+<ng-container *ngIf="data$ | async as todos; else loader;">
     <ul class="todo-list">
-        <li *ngFor="let todo of todos; let index = index"
+        <li *ngFor="let todo of todos | search:'title,isCompleted':searchString; let index = index"
             class="todo-list__item">
             <app-todo-card [data]="todo"
                            (markCompletedEvent)="markCompletedEvent(index)"

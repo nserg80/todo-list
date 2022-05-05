@@ -1,12 +1,12 @@
 [
     {
-        "title": "Task 1",
+        "title": "First task",
         "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
         "isCompleted": false
     },
     {
-        "title": "Task 2",
-        "desc": "Lorem ipsum dolor sit amet",
+        "title": "Second task",
+        "desc": "Lorem ipsum dolor sit amet, desc",
         "isCompleted": true
     },
     {

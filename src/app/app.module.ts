@@ -7,12 +7,14 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoCardComponent } from './components/todo-card/todo-card.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoCardComponent
+    TodoCardComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
