@@ -1,0 +1,17 @@
+<ng-container *ngIf="data$ | async as todos; else loader">
+    <ul class="todo-list">
+        <li *ngFor="let todo of todos; let index = index"
+            class="todo-list__item">
+            <app-todo-card [data]="todo"
+                           (removeEvent)="remove(index)"></app-todo-card>
+        </li>
+    </ul>
+
+    <footer class="todo-list-footer">
+        <p><strong>Total:</strong> {{todos.length}}
+            (<strong>completed:</strong> {{ getCompletedCount(todos)}},
+            <strong>not completed:</strong> {{ todos.length - getCompletedCount(todos)}})</p>
+    </footer>
+</ng-container>
+
+<ng-template #loader>Loading...</ng-template>

@@ -1,0 +1,22 @@
+.todo-list-header {
+    padding: 24px 0 0;
+}
+
+.todo-list {
+    margin: 0;
+    padding: 16px 0;
+    list-style: none;
+    &__item {
+        margin: 16px 0;
+        position: relative;
+        top: 0;
+
+        &:hover {
+            top: -3px;
+        }
+    }
+}
+
+.todo-list-footer {
+    padding: 0 0 24px;
+}

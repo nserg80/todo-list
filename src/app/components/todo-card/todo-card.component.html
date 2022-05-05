@@ -1,0 +1,12 @@
+<div class="todo-card">
+    <header class="todo-card__header">
+        <div class="status">
+            {{data.isCompleted? EStatus.completed : EStatus.notCompleted}}
+        </div>
+        <h2 class="todo-card__title">{{data.title}}</h2>
+    </header>
+    {{data.desc}}
+    <footer class="todo-card__footer">
+        <button (click)="remove()" class="button button_primary">Remove</button>
+    </footer>
+</div>
