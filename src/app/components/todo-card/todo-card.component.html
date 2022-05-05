@@ -1,4 +1,5 @@
-<div class="todo-card">
+<div class="todo-card"
+     [ngClass]="{'todo-card_completed': data.isCompleted}">
     <header class="todo-card__header">
         <div class="status">
             {{data.isCompleted? EStatus.completed : EStatus.notCompleted}}

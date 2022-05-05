@@ -16,6 +16,10 @@ export class DataService {
     const url = `/assets/data/data.json`;
     this.http.get<ITask[]>(url)
       .pipe(
+        map(r => {
+          r.sort((a:ITask, b:ITask) => Number(a.isCompleted) - Number(b.isCompleted));
+          return r
+        }),
         take(1)
       )
       .subscribe(r => this.state.next(r));

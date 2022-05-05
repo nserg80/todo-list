@@ -3,6 +3,16 @@
     box-shadow: 0 0 5px #ccc;
     border-radius: 4px;
 
+    &_completed {
+        box-shadow: 0 0 5px green;
+        color: rgb(182, 182, 182);
+
+        .status {
+            background: rgb(77, 139, 74);
+            color: #fff;
+        }
+    }
+
     &_completed  &__title {
         text-decoration: line-through;
     }
