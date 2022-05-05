@@ -6,7 +6,6 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
-
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -38,7 +37,7 @@ export class TodoListComponent implements OnInit {
     this.dataService.removeTask(index);
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(template);
 
     if (this.modalRef?.onHide) {
@@ -50,14 +49,14 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  unsubscribe() {
+  unsubscribe(): void {
     this.subscriptions.forEach((subscription: Subscription) => {
       subscription.unsubscribe();
     });
     this.subscriptions = [];  
   }
 
-  submit() {
+  submit(): void {
     if (this.form.invalid) {
       return
     }
@@ -72,11 +71,19 @@ export class TodoListComponent implements OnInit {
     this.modalService.hide();
   }
 
-  removeAllCompleted() {
+  removeAllCompleted(): void {
     this.dataService.removeAllCompleted();
   }
 
-  ngOnDestroy() {
+  markAllCompleted(): void {
+    this.dataService.markAllCompleted();
+  }
+
+  markCompletedEvent(index: number) {
+    this.dataService.markCompleted(index);
+  }
+
+  ngOnDestroy(): void {
     this.unsubscribe();    
   }
 }

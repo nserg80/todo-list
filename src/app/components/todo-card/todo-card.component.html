@@ -8,6 +8,7 @@
     </header>
     {{data.desc}}
     <footer class="todo-card__footer">
+        <button (click)="markCompleted()" class="btn btn-light">Mark completed</button>
         <button (click)="remove()" class="btn btn-danger">Remove</button>
     </footer>
 </div>
