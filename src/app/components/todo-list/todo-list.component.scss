@@ -1,5 +1,10 @@
 .todo-list-header {
     padding: 24px 0 0;
+    display: flex;
+
+    .btn + .btn {
+        margin-left: 16px;
+    }
 }
 
 .todo-list {

@@ -8,7 +8,7 @@ import { ITask } from '../typings';
   providedIn: 'root'
 })
 export class DataService {
-  state = new BehaviorSubject<ITask[]>([])
+  state$ = new BehaviorSubject<ITask[]>([])
 
   constructor(private http: HttpClient) { }
 
@@ -22,14 +22,18 @@ export class DataService {
         }),
         take(1)
       )
-      .subscribe(r => this.state.next(r));
+      .subscribe(r => this.state$.next(r));
   }
 
   removeTask(index: number): void {
-    this.state.getValue().splice(index, 1);
+    this.state$.getValue().splice(index, 1);
+  }
+
+  removeAllCompleted(): void {
+    this.state$.next(this.state$.getValue().filter(task => !task.isCompleted))
   }
   
   addTask(task: ITask): void {
-    this.state.getValue().unshift(task);
+    this.state$.getValue().unshift(task);
   }
 }

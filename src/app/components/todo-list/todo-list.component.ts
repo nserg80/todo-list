@@ -23,7 +23,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getTasks();
-    this.data$ = this.dataService.state;
+    this.data$ = this.dataService.state$;
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required),
       desc: new FormControl(null, Validators.required),
@@ -70,6 +70,10 @@ export class TodoListComponent implements OnInit {
 
     this.dataService.addTask(task);
     this.modalService.hide();
+  }
+
+  removeAllCompleted() {
+    this.dataService.removeAllCompleted();
   }
 
   ngOnDestroy() {

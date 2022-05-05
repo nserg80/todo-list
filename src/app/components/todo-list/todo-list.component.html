@@ -2,6 +2,10 @@
     <button type="button"
             class="btn btn-success"
             (click)="openModal(template)">Add task</button>
+    
+    <button type="button"
+        class="btn btn-danger"
+        (click)="removeAllCompleted()">Remove completed</button>
 </header>
 
 <ng-container *ngIf="data$ | async as todos; else loader">
